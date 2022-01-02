@@ -1,7 +1,8 @@
 #include "OutputPin.hpp"
 #include "InputPin.hpp"
+#include "SerialLogger.hpp"
 
-//InputPin pin5(5);
+InputPin pin5(5);
 OutputPin pin11(11);
 OutputPin pin12(12);
 OutputPin pin13(13);
@@ -11,14 +12,22 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  auto& logger = SerialLogger::GetInstance();
+  logger.Log("Hello from SerialLogger!");
+
+  auto btnVal = pin5.Read();
+  logger.Log(btnVal);
+
   pin11.Write(HIGH);
   pin12.Write(LOW);
   pin13.Write(HIGH);
+  delay(500);
 
-  delay(1000);              // wait for a second
+  btnVal = pin5.Read();
+  logger.Log(btnVal);
+
   pin11.Write(LOW);
   pin12.Write(HIGH);
   pin13.Write(LOW);
-  delay(1000);              // wait for a second
+  delay(500);
 }
