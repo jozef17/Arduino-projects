@@ -3,10 +3,18 @@
 
 InputPin::InputPin(uint8_t pin) : Pin(pin)
 {
-  OpenPin(PinMode::input);
+    OpenPin(PinMode::input);
 }
 
-uint8_t InputPin::Read()
+uint16_t InputPin::Read()
 {
-  return digitalRead(this->pinNumber);
+  // Read the value based on digital vs analog pin use
+  if (this->pinNumber < A0)
+  {
+    return digitalRead(this->pinNumber);
+  }
+  else
+  {
+    return analogRead(this->pinNumber);
+  }
 }
