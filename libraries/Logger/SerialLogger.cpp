@@ -1,5 +1,5 @@
 #include "SerialLogger.hpp"
-#include "Core.hpp"
+#include <Core.hpp>
 
 SerialLogger::SerialLogger()
 {

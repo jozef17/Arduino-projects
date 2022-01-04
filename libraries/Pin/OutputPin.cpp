@@ -1,5 +1,5 @@
 #include "OutputPin.hpp"
-#include "Core.hpp"
+#include <Core.hpp>
 
 OutputPin::OutputPin(uint8_t pin,  bool isAnalog) : Pin(pin), isAnalog(isAnalog)
 {

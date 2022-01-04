@@ -1,5 +1,5 @@
 #include "InputPin.hpp"
-#include "Core.hpp"
+#include <Core.hpp>
 
 InputPin::InputPin(uint8_t pin) : Pin(pin)
 {
