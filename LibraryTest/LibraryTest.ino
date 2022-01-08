@@ -1,44 +1,21 @@
-#include "OutputPin.hpp"
-#include "InputPin.hpp"
-#include "SerialLogger.hpp"
+#include <StepperMotor.hpp>
 
-InputPin pinA0(A0);  // Potentiometer
-InputPin pin5(5);    // Button
-OutputPin pin11(11); // LED
-OutputPin pin12(12); // LED
-OutputPin pin13(13); // LED
-OutputPin pin9(9,true); // LED
+// Stepper motor (28BYJ-48)
+// Motor IN1 connected to pin 11
+// Motor IN2 connected to pin 10
+// Motor IN3 connected to pin  9
+// Motor IN4 connected to pin  8
+StepperMotor motor(11,10,9,8);
 
-void setup() {
-  // put your setup code here, to run once:
+void setup()
+{
 }
 
-void loop() {
-  auto& logger = SerialLogger::GetInstance();
-  logger.Log("Hello from SerialLogger!");
+void loop()
+{
+  motor.MoveCounterClockwise(512);
+  delay(2000);
 
-  // Button (Digital) Input
-  auto btnVal = pin5.Read();
-  logger.Log(btnVal);
-
-  // Potentiometer (Analog) Input
-  auto pmVal = pinA0.Read();
-  logger.Log(pmVal);
-  pin9.Write((pmVal / 10.23) * 2.55);
-
-  // Digital Output
-  pin11.Write(HIGH);
-  pin12.Write(LOW);
-  pin13.Write(HIGH);
-  delay(pmVal);
-
-  // Update Potentiometer (Analog) Input
-  pmVal = pinA0.Read();
-  logger.Log(pmVal);
-  pin9.Write((pmVal / 10.23) * 2.55);
-
-  pin11.Write(LOW);
-  pin12.Write(HIGH);
-  pin13.Write(LOW);
-  delay(pmVal);
+  motor.MoveClockwise(512);
+  delay(2000);
 }
