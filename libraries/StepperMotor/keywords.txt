@@ -1,0 +1,7 @@
+#  datatypes and class names
+StepperMotor	KEYWORD1
+
+# functions and methods
+MoveClockwise	KEYWORD2
+MoveCounterClockwise	KEYWORD2
+
