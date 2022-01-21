@@ -3,7 +3,7 @@
 
 #include "Pin.hpp"
 
-class OutputPin final : public Pin
+class OutputPin : public Pin
 {
   public:
     OutputPin(uint8_t pin, bool isAnalog = false);
