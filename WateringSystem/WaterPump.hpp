@@ -3,16 +3,13 @@
 
 #include <OutputPin.hpp>
 
-class WaterPump final // TODO Superclass
+class WaterPump final : OutputPin
 {
   public:
-    WaterPump(uint8_t pinNumber) : pumpPin(pinNumber) {};
+    WaterPump(uint8_t pinNumber) : OutputPin(pinNumber) {};
 
-    void On() { pumpPin.Write(1); };
-    void Off() { pumpPin.Write(0); };
-
-  private:
-    OutputPin pumpPin;
+    void On() { Write(1); };
+    void Off() { Write(0); };
 
 };
 

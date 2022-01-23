@@ -1,7 +1,8 @@
 #include "Wattering.hpp"
-#include "WaterPump.hpp"
-#include "PinConst.hpp"
 #include "Analysing.hpp"
+#include "Callibrating.hpp"
+
+#include "PinConst.hpp"
 
 WaterPump Wattering::pump(PUMP_PIN);
 OutputPin Wattering::led(GREEN_LED_PIN);
@@ -17,7 +18,6 @@ Wattering::Wattering(uint16_t dry, uint16_t wet) : dry(dry), wet(wet)
 
   // Turn on LED
   led.Write(1);
-
 }
 
 Wattering::~Wattering()
@@ -31,15 +31,13 @@ Wattering::~Wattering()
 
 State *Wattering::HandleButtonPress() 
 {
-  // TODO go to callibrating state
-  return this;
+  return new Callibrating();
 }
 
 State *Wattering::HandleSensorValue(uint16_t val) 
 {
   if(val < this->threshold)
   {
-      SerialLogger::GetInstance().Log("Going To Analysing state");
       return new Analysing(this->dry, this->wet);
   }
   return this;

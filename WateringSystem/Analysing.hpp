@@ -4,7 +4,7 @@
 #include "State.hpp"
 
 // Analysing state
-class Analysing : public State
+class Analysing final: public State
 {
   public:
     Analysing(uint16_t dry, uint16_t wet);

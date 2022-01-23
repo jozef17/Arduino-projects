@@ -5,7 +5,7 @@
 #include "WaterPump.hpp"
 
 // Wattering state
-class Wattering : public State
+class Wattering final: public State
 {
   public:
     Wattering(uint16_t dry, uint16_t wet);

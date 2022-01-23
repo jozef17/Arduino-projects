@@ -1,13 +1,10 @@
 #include <Button.hpp>
 
-#include "Analysing.hpp"
+#include "Callibrating.hpp"
 #include "PinConst.hpp"
 
-#define DRY 520
-#define WET 220
-
-InputPin soilMoistureSensor(MOISTURE_SENSOR_PIN);
 Button button(BUTTON_PIN);
+InputPin soilMoistureSensor(MOISTURE_SENSOR_PIN);
 
 State *currentState = nullptr;
 
@@ -15,7 +12,7 @@ void SetState(State * newState);
 
 void setup()
 {
-  currentState = new Analysing(DRY, WET);
+  currentState = new Callibrating();
 }
 
 void loop() 
