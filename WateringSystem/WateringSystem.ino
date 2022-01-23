@@ -1,42 +1,44 @@
-#include <SerialLogger.hpp>
-#include <InputPin.hpp>
+#include <Button.hpp>
 
-#include "WaterPump.hpp"
+#include "Analysing.hpp"
+#include "PinConst.hpp"
 
-// Hihher value, dryer the surrounding of sensor is (520 is dry in the air)
-#define START_WATERING_AT 400
-// Sensor submerged in water 220
-#define STOP_WATERING_AT 300
+#define DRY 520
+#define WET 220
 
-InputPin soilMoistureSensor(A0);
-WaterPump waterPump(10);
+InputPin soilMoistureSensor(MOISTURE_SENSOR_PIN);
+Button button(BUTTON_PIN);
 
-void setup() {}
+State *currentState = nullptr;
 
-void loop() {
-  auto soilMoisture = soilMoistureSensor.Read();
-  SerialLogger::GetInstance().Log(soilMoisture);
+void SetState(State * newState);
 
-  // Start watering if soils is dry enough
-  if (soilMoisture >= START_WATERING_AT)
+void setup()
+{
+  currentState = new Analysing(DRY, WET);
+}
+
+void loop() 
+{  
+  // Check Button & Update state on button release
+  auto btn = button.GetChange();
+  if (btn == Button::BtnState::Released)
   {
-    // Turn on pump
-    waterPump.On();
-    SerialLogger::GetInstance().Log("ON");
-    
-    // leave pump on until soil is wet enough
-    do
-    {
-      soilMoisture = soilMoistureSensor.Read();
-      SerialLogger::GetInstance().Log(soilMoisture);
-      delay(1000);
-    } while (soilMoisture > STOP_WATERING_AT); // Stop wattering if soil is wet enough
-
-    // Turn off pump
-    waterPump.Off();
-    SerialLogger::GetInstance().Log("OFF");
-
+    SetState(currentState->HandleButtonPress());
   }
 
-  delay(10000);
+  // Check soil Moisture sensor & Update state
+  auto soilMoisture = soilMoistureSensor.Read();
+  SetState(currentState->HandleSensorValue(soilMoisture));
+
+  delay(50);
+}
+
+void SetState(State * newState)
+{
+  if(currentState != newState)
+  {
+    delete currentState;
+    currentState = newState;
+  }
 }
