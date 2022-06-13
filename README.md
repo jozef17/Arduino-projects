@@ -31,34 +31,12 @@ Encapsulates functionality needed for stepper motor 28BYJ-48 with driver
 
 ![Demo](libraries/ClassDiagram.png)
 
-## Watering System
+## [Watering System](WateringSystem)
+
 - Automated wattering system
 - Includes callibration / re-callibration
 - 2 status indicating LEDs
 - Button press switches between callibration and wattering mode
-- HW componenrts include:
-    - Arduino (nano)
-    - Soil Moisture sensor (connected to A0 pin)
-    - 1 channel 5v relay module (connected to D10 pin)
-    - Water pump (connected to relay)
-    - (WIP) Yellow (connected to D2 pin) and green (connected to D3 pin) LEDs
-    - (WIP) Push button (connected to D12 pin)
+- Driven by state machine
 
-TODO: Callibrating.gif
-TODO: Wattering.gif
-
-### State Machine
-![Demo](WateringSystem/media/PlantWatteringStateDiagram.png)
-- Implemented as State Pattern
-- Three States:
-    - Callibrating
-    - Analysing
-    - Wattering
-
-### Class Model
-![Demo](WateringSystem/media/ClassDiagram.png)
-- Abstract class State represents state pattern interface.
-- Analysing class represents analysing state. Checks if soil needs wattering.
-- Callibrating class represents analysing state. Gets values for dry and wet sensor.
-- Wattering class represents analysing state. Pump is on until soil is wet enough.
-- WaterPump cvlass is abstraction of pump.
+![Demo](WateringSystem/media/Watering.gif)
