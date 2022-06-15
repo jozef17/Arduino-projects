@@ -8,7 +8,7 @@ class InputPin : public Pin
   public:
     InputPin(uint8_t pin);
 
-    uint16_t Read();
+    uint16_t Read() const;
 
 };
 

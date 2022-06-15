@@ -3,20 +3,23 @@
 
 #include "State.hpp"
 
+class Model;
+
 // Analysing state
 class Analysing final: public State
 {
   public:
-    Analysing(uint16_t dry, uint16_t wet);
+    Analysing(Model &model);
     virtual ~Analysing() = default;
 
     virtual State *HandleButtonPress() override;
     virtual State *HandleSensorValue(uint16_t val) override;
 
-  private:  
-    uint16_t dry;
-    uint16_t wet;
+    virtual void UpdateView(View &view) override;
 
+  private:  
+    Model &model;
+    
     uint16_t threshold;
     
 };

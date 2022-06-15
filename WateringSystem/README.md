@@ -34,7 +34,7 @@ After powering on, system is set to calibrating mode:
 ### Watering 
 When system detect that soil is too dry, watering automatically turns on. 
 
-<B>NOTE: Make sure you have enough water in the tank</B>
+**NOTE: Make sure you have enough water in the tank**
 
 ### Re-calibrating
 
@@ -45,21 +45,30 @@ By pressing button at any time, system goes to callibrating mode (see Setup sect
 
 ![Demo](media/PumpSetup.gif)
 
-## State Machine
-![Demo](media/PlantWatteringStateDiagram.png)
+
+## Architecture
+### Model-View-Controller (MVC)
+![Demo](media/MVC.png)
+
+**Model**
+- Contains data for watering
+
+**View**
+- Controlls UI indicators (LEDs & Water pump)
+- Detect input devicess (Button and Soil Moisture Sensor)
+
+**Controller**
+- Handles state machine
+
+### State Machine
+![Demo](media/StateMachine.png)
+
 - Implemented as State Pattern
 - Three States:
     - Callibrating
     - Analysing
     - Wattering
 
-<span style="color:Red"><B>NOTE: Diagram does not include self transisions</B></span>
+### Class Model
+![Demo](media/ClassModel.png)
 
-
-## Class Model
-![Demo](media/ClassDiagram.png)
-- Abstract class State represents state pattern interface.
-- Analysing class represents analysing state. Checks if soil needs wattering.
-- Callibrating class represents analysing state. Gets values for dry and wet sensor.
-- Wattering class represents analysing state. Pump is on until soil is wet enough.
-- WaterPump cvlass is abstraction of pump.

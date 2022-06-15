@@ -3,13 +3,16 @@
 
 #include <OutputPin.hpp>
 
-class WaterPump final : OutputPin
+class WaterPump final 
 {
   public:
-    WaterPump(uint8_t pinNumber) : OutputPin(pinNumber) {};
+    WaterPump(uint8_t pinNumber) : pin(OutputPin(pinNumber)) {};
 
-    void On() { Write(1); };
-    void Off() { Write(0); };
+    inline void On() { pin.Write(1); };
+    inline void Off() { pin.Write(0); };
+
+  private:
+    OutputPin pin;
 
 };
 

@@ -1,40 +1,34 @@
 #include "Callibrating.hpp"
 #include "Analysing.hpp"
-#include "PinConst.hpp"
 
-OutputPin Callibrating::led(YELLOW_LED_PIN);
-
-Callibrating::Callibrating()
-{
-  // Turn on LED
-  led.Write(1);
-}
-
-Callibrating::~Callibrating()
-{
-  // Turn off LED
-  led.Write(0);
-}
-
+#include "Model.hpp"
+#include "View.hpp"
 
 State *Callibrating::HandleButtonPress()
 {
-  return new Analysing(this->dry, this->wet);
+  return new Analysing(this->model);
 }
 
 State *Callibrating::HandleSensorValue(uint16_t val)
 {
   // Wet - min value
-  if (val < this->wet)
+  if (val < this->model.GetWet())
   {
-    this->wet = val;
+    this->model.UpdateWet(val);
   }
 
   // Dry - max value
-  if (val > this->dry)
+  if (val > this->model.GetDry())
   {
-    this->dry = val;
+    this->model.UpdateDry(val);
   }
 
   return this;
+}
+
+void Callibrating::UpdateView(View &view)
+{
+  view.TurnPumpOff();
+  view.TurnGreenLEDOff();
+  view.TurnYellowLEDOn();
 }

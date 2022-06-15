@@ -2,23 +2,23 @@
 #define CALLIBRATING_STATE_HPP_
 
 #include "State.hpp"
-#include "OutputPin.hpp"
+
+class Model;
 
 // Callibrating state
 class Callibrating final: public State
 {
   public:
-    Callibrating();
-    virtual ~Callibrating();
+    Callibrating(Model &model) : model(model) {};
+    virtual ~Callibrating() = default;
     
     virtual State *HandleButtonPress() override;
     virtual State *HandleSensorValue(uint16_t val) override;
 
-  private:
-    uint16_t wet = (uint16_t) - 1; 
-    uint16_t dry = 0;
+    virtual void UpdateView(View &view) override;
 
-    static OutputPin led;
+  private:
+    Model &model;
 
 };
 

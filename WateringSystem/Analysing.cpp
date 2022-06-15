@@ -2,23 +2,33 @@
 #include "Wattering.hpp"
 #include "Callibrating.hpp"
 
-Analysing::Analysing(uint16_t dry, uint16_t wet) : dry(dry), wet(wet)
+#include "Model.hpp"
+#include "View.hpp"
+
+Analysing::Analysing(Model &model) : model(model)
 {
   // Get range
-  auto range = this->dry - this->wet;
-  this->threshold = (uint16_t)(0.65f * (float)range) + this->wet;
+  auto range = this->model.GetDry() - model.GetWet();
+  this->threshold = (uint16_t)(0.65f * (float)range) + model.GetWet();
 }
 
 State *Analysing::HandleButtonPress() 
 {
-  return new Callibrating();
+  return new Callibrating(this->model);
 }
 
 State *Analysing::HandleSensorValue(uint16_t val) 
 {
   if(val > this->threshold)
   {
-      return new Wattering(this->dry, this->wet);
+      return new Wattering(this->model);
   }
   return this;
+}
+
+void Analysing::UpdateView(View &view)
+{
+  view.TurnPumpOff();
+  view.TurnGreenLEDOff();
+  view.TurnYellowLEDOff();
 }

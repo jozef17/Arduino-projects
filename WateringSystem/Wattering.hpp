@@ -2,24 +2,23 @@
 #define WATTERING_STATE_HPP_
 
 #include "State.hpp"
-#include "WaterPump.hpp"
+
+class Model;
 
 // Wattering state
 class Wattering final: public State
 {
   public:
-    Wattering(uint16_t dry, uint16_t wet);
-    virtual ~Wattering();
+    Wattering(Model& model);
+    virtual ~Wattering() = default;
 
     virtual State *HandleButtonPress() override;
     virtual State *HandleSensorValue(uint16_t val);
 
-  private:
-    static WaterPump pump;
-    static OutputPin led;
+    virtual void UpdateView(View &view) override;
 
-    uint16_t dry;
-    uint16_t wet;
+  private:
+    Model &model;
 
     uint16_t threshold;
 
