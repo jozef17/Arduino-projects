@@ -1,4 +1,5 @@
 #include "Controller.hpp"
+#include "SerialLogger.hpp"
 
 Controller controller;
 

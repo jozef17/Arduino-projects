@@ -15,15 +15,14 @@ void Controller::Run()
 {
   // Check Button & Update state on button release
   auto btn = view.CheckButton();
-  if (btn == Button::BtnState::Released)
-  {
-    UpdateState(this->state->HandleButtonPress());
-  }
+  auto newState = this->state->HandleButtonPress(btn);
+  UpdateState(newState);
 
   // Check soil Moisture sensor & Update state
   auto soilMoisture = view.GetMoisture();
   UpdateState(this->state->HandleSensorValue(soilMoisture));
 
+  this->state->UpdateView(this->view);
 }
 
 void Controller::UpdateState(State *newState)
@@ -32,6 +31,5 @@ void Controller::UpdateState(State *newState)
   {
     delete this->state;
     this->state = newState;
-    this->state->UpdateView(this->view);
   }
 }

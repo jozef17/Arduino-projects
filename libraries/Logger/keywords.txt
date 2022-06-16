@@ -4,4 +4,5 @@ lLogger	KEYWORD1
 
 #functions and methods
 Log	KEYWORD2
+NewLine	KEYWORD2
 GetInstance	KEYWORD2

@@ -12,7 +12,7 @@ class Analysing final: public State
     Analysing(Model &model);
     virtual ~Analysing() = default;
 
-    virtual State *HandleButtonPress() override;
+    virtual State *HandleButtonPress(Button::BtnState btnstate) override;
     virtual State *HandleSensorValue(uint16_t val) override;
 
     virtual void UpdateView(View &view) override;

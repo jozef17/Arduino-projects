@@ -12,9 +12,13 @@ Wattering::Wattering(Model& model) : model(model)
   this->threshold = (uint16_t)(0.25f * (float)range) + this->model.GetWet();
 }
 
-State *Wattering::HandleButtonPress() 
+State *Wattering::HandleButtonPress(Button::BtnState btnstate)
 {
-  return new Callibrating(this->model);
+  if(btnstate == Button::BtnState::Released)
+  {
+    return new Callibrating(this->model);
+  }
+  return this;
 }
 
 State *Wattering::HandleSensorValue(uint16_t val) 

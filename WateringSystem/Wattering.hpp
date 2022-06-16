@@ -12,8 +12,8 @@ class Wattering final: public State
     Wattering(Model& model);
     virtual ~Wattering() = default;
 
-    virtual State *HandleButtonPress() override;
-    virtual State *HandleSensorValue(uint16_t val);
+    virtual State *HandleButtonPress(Button::BtnState btnstate) override;
+    virtual State *HandleSensorValue(uint16_t val) override;
 
     virtual void UpdateView(View &view) override;
 

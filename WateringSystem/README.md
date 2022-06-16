@@ -16,9 +16,10 @@
 ## User Manual
 
 ### LED indicators
-- <B>Yellow LED ON</B> - System is in callibrating mode 
-- <B>Green LED ON</B> - Soild detected too dry and watering is in progress
-- <B>All LEDs OFF</B> - Soil is suffciently wet
+- <B>Yellow LED On</B> - System is in callibrating mode 
+- <B>Green LED On</B> - Soild too dry and watering is in progress
+- <B>Green LED Flashing</B> - Extra wattering in progress
+- <B>All LEDs Off</B> - Soil is suffciently wet
 
 ### Setup (Calibrating)
 Since different soil moisture sensor produce vales from different range, callibration ensures the right limits are taken into account.
@@ -30,6 +31,10 @@ After powering on, system is set to calibrating mode:
 4. Press the button.
 
 ![Demo](media/Watering.gif)
+
+### Extra / On demand Wattering
+To **start** on demand wattering press and hold button for 3 seconds while all LEDs are turned off.
+To **stop** on demand wattering press and hold button for 3 seconds while green LED is flashing.
 
 ### Watering 
 When system detect that soil is too dry, watering automatically turns on. 
@@ -64,9 +69,10 @@ By pressing button at any time, system goes to callibrating mode (see Setup sect
 ![Demo](media/StateMachine.png)
 
 - Implemented as State Pattern
-- Three States:
+- Four States:
     - Callibrating
     - Analysing
+    - Extra Wattering
     - Wattering
 
 ### Class Model

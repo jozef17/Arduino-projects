@@ -13,9 +13,11 @@ class SerialLogger final : public Logger
     // Get singleton instance
     static Logger& GetInstance();
 
-    virtual void Log(const char * msg) override;
-    virtual void Log(int msg) override;
+    virtual void Log(const char* message) override;
+    virtual void Log(long msg, int base) override;
     
+    virtual void NewLine() override;
+
   protected:
     SerialLogger();
     ~SerialLogger();

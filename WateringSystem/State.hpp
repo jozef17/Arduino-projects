@@ -2,6 +2,7 @@
 #define STATE_HPP_
 
 #include <stdint.h>
+#include <Button.hpp>
 
 class View;
 
@@ -11,7 +12,7 @@ class State
   public:  
     virtual ~State() = default;
   
-    virtual State *HandleButtonPress() = 0;
+    virtual State *HandleButtonPress(Button::BtnState btnstate) = 0;
     virtual State *HandleSensorValue(uint16_t val) = 0;
 
     virtual void UpdateView(View &view) = 0;

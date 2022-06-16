@@ -4,9 +4,13 @@
 #include "Model.hpp"
 #include "View.hpp"
 
-State *Callibrating::HandleButtonPress()
+State *Callibrating::HandleButtonPress(Button::BtnState btnstate)
 {
-  return new Analysing(this->model);
+  if(btnstate == Button::BtnState::Released)
+  {
+    return new Analysing(this->model);
+  }
+  return this;
 }
 
 State *Callibrating::HandleSensorValue(uint16_t val)
