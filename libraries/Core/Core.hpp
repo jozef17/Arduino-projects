@@ -4,3 +4,5 @@
 #else
 #include "WProgram.h"
 #endif
+
+#include <stdint.h>

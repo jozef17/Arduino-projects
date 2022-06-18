@@ -6,7 +6,7 @@ InputPin::InputPin(uint8_t pin) : Pin(pin)
     OpenPin(PinMode::input);
 }
 
-uint16_t InputPin::Read()
+uint16_t InputPin::Read() const
 {
   // Read the value based on digital vs analog pin use
   if (this->pinNumber < A0)

@@ -1,5 +1,4 @@
 #include "SerialLogger.hpp"
-#include <Core.hpp>
 
 SerialLogger::SerialLogger()
 {
@@ -11,14 +10,19 @@ SerialLogger::~SerialLogger()
   Serial.end();
 }
 
-void SerialLogger::Log(const char * msg)
+void SerialLogger::Log(const char* message)
 {
-  Serial.println(msg);
+  Serial.print(message);
 }
 
-void SerialLogger::Log(int msg)
+void SerialLogger::Log(long msg, int base)
 {
-  Serial.println(msg, DEC);
+  Serial.print(msg, base);
+}
+
+void SerialLogger::NewLine()
+{
+	Serial.println("");
 }
 
 Logger& SerialLogger::GetInstance()
