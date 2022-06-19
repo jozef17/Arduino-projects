@@ -12,7 +12,7 @@ class OutputPin : public Pin
 
   private:
     bool isAnalog = false;
-    
+    volatile uint8_t *outputRegister;
 };
 
 #endif /* OUTPUT_PIN_HPP_ */

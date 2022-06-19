@@ -2,7 +2,6 @@
 InputPin	KEYWORD1
 OutputPin	KEYWORD1
 Pin	KEYWORD1
-PinMode	KEYWORD1
 
 # functions and methods
 Read	KEYWORD2

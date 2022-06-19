@@ -16,12 +16,11 @@ Contains all functionality needed for logging purposes.
     - Loggs message or number via Arduino's serial interface
     - Bound rate is **9600**
 ### Pin
-Contains all functionality related to Arduino's' IO pins
-- PinMode is enum representation of Pin Mode (Input, Output or inputPullu)
+Contains functionality related to Arduino's IO pins
 - Abstract class Pin contains common functionality
+- Uses registers to set and read digital values
 - InputPin represents any input pin (both analog and digital)     
     - Reads current value on pin
-    - <span style="color:Red">**NOTE: InputPullup is not supported yet**</span>
 - OutputPin represents any output pin (both PWM and digital)
     - Writes value to pin
 ### StepperMotor
@@ -33,7 +32,7 @@ Encapsulates functionality needed for stepper motor 28BYJ-48 with driver
 
 ## [Watering System](WateringSystem)
 
-- Automated wattering system
+- Automated plant wattering system
 - Includes callibration / re-callibration
 - 2 status indicating LEDs
 - Button press switches between callibration and wattering mode

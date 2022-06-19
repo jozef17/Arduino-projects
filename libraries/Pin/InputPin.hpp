@@ -10,6 +10,8 @@ class InputPin : public Pin
 
     uint16_t Read() const;
 
+  private:
+    volatile uint8_t *inputRegister;
 };
 
 #endif /* INPUT_PIN_HPP_ */

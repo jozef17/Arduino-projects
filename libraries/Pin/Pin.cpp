@@ -1,10 +1,6 @@
 #include "Pin.hpp"
 #include <Core.hpp>
 
-Pin::Pin(uint8_t pinNumber) : pinNumber(pinNumber)
-{}
-
-void Pin::OpenPin(PinMode mode)
+Pin::Pin(uint8_t pinNumber) : pinNumber(pinNumber), pinPort(digitalPinToPort(pinNumber)), pinBitMask(digitalPinToBitMask(pinNumber))
 {
-  pinMode(this->pinNumber, static_cast<uint8_t>(mode));
 }
