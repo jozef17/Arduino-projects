@@ -15,8 +15,6 @@ class SerialLogger final : public Logger
 
     virtual void Log(const char* message) override;
     virtual void Log(long msg, int base) override;
-    
-    virtual void NewLine() override;
 
   protected:
     SerialLogger();
