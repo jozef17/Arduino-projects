@@ -1,7 +1,7 @@
 # Arduino-projects
 Arduino projects
 
-## libraries
+## [libraries](libraries)
 Contains human friendly abstractions 
 ### Core
 Core library contains commonly used includes
@@ -23,6 +23,7 @@ Contains functionality related to Arduino's IO pins
     - Reads current value on pin
 - OutputPin represents any output pin (both PWM and digital)
     - Writes value to pin
+- IOPin enables to switch between input and output of given pin
 ### StepperMotor
 Encapsulates functionality needed for stepper motor 28BYJ-48 with driver
 - Allows move stepper motor by required amount of steps in required direction
