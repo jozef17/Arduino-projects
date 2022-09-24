@@ -6,11 +6,11 @@
 - Button press switches between callibration and wattering mode
 - HW componenrts include:
     - Arduino (nano was used)
-    - Soil Moisture sensor (connected to A0 pin)
-    - 1 channel 5v relay module (connected to D10 pin)
+    - Soil Moisture sensor (connected to **A0** pin)
+    - 1 channel 5v relay module (connected to **D10** pin)
     - Water pump (connected to relay module)
-    - Yellow (connected to D2 pin) and green (connected to D3 pin) LEDs
-    - Push button (connected to D12 pin)
+    - Yellow (connected to **D2** pin) and green (connected to **D3** pin) LEDs
+    - Push button (connected to **D12** pin)
     - 2x 220Ω resistor and 1x 10kΩ resistor
 
 ## User Manual
@@ -46,10 +46,13 @@ When system detect that soil is too dry, watering automatically turns on.
 By pressing button at any time, system goes to callibrating mode (see Setup section)
 
 ## Hardware Setup
+### Wiring
 ![Demo](media/Wiring.gif)
 
-![Demo](media/PumpSetup.gif)
+![Demo](media/Wiring.png)
 
+### Pump Setup
+![Demo](media/PumpSetup.gif)
 
 ## Architecture
 ### Model-View-Controller (MVC)
