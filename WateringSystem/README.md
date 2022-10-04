@@ -47,7 +47,7 @@ By pressing button at any time, system goes to callibrating mode (see Setup sect
 
 ## Hardware Setup
 ### Wiring
-![Demo](media/Wiring.gif)
+![Demo](media/Setup.gif)
 
 ![Demo](media/Wiring.png)
 

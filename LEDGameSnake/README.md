@@ -14,30 +14,29 @@
 TODO IMAGE
 
 ## User Manual
+
 TODO
 
 ## Hardware Setup
 
-TODO gif
+![Demo](media/Setup.gif)
 
 For better clarity, wiring was split into 3 parts:
 - Buttons
+    - Pin 9: **Right**
+    - Pin 10: **Left**
+    - Pin 11: **Down**
+    - Pin 12: **Up**
 - One line of LEDs
 - Shift registers daisychain
 
 ### Buttons
-TODO gif
-
 ![Demo](media/Buttons.png)
 
 ### LEDs
-TODO gif
-
 ![Demo](media/LEDs.png)
 
 ### Shift Registers
-TODO gif
-
 ![Demo](media/ShiftRegisterChain.png)
 **NOTE:** Because of limited space, the diagram does not show sixth schift register. The last shift register is wired in the same way as previous shift registers.
 
