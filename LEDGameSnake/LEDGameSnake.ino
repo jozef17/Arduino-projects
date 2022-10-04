@@ -1,62 +1,51 @@
+#include <InputPin.hpp>
+#include <SerialLogger.hpp>
+#include "PinConst.hpp"
+#include "Window.hpp"
 #include "ShiftRegister.hpp"
 
-int latchPin = 5;  // Latch pin of 74HC595 is connected to Digital pin 5
-int clockPin = 6; // Clock pin of 74HC595 is connected to Digital pin 6
-int dataPin = 4;  // Data pin of 74HC595 is connected to Digital pin 4
+InputPin upBtn(UP_BUTTON);
+InputPin downBtn(DOWN_BUTTON);
+InputPin leftBtn(LEFT_BUTTON);
+InputPin rightBtn(RIGHT_BUTTON);
 
-byte leds1 = 0;
-byte leds2 = 0;
-byte leds3 = 0;
+Window window(DATA, CLOCK, LATCH);
 
-ShiftRegister shiftRegister(dataPin, clockPin, latchPin);
-
-#define DELAY 50
-/*
- * setup() - this function runs once when you turn your Arduino on
- * We initialize the serial connection with the computer
- */
 void setup() 
 {
-  // Set all the pins of 74HC595 as OUTPUT
-  pinMode(latchPin, OUTPUT);
-  pinMode(dataPin, OUTPUT);  
-  pinMode(clockPin, OUTPUT);
+  window.Render();
+  delay(5000); 
 }
 
-/*
- * loop() - this function runs over and over again
- */
 void loop() 
 {
-  leds1 = 0; // Initially turns all the LEDs off, by giving the variable 'leds' the value 0
-  leds2 = 0; // Initially turns all the LEDs off, by giving the variable 'leds' the value 0
+  uint8_t img1[6] = { 0b01010101,
+                      0b10101010,
+                      0b01010101,
+                      0b10101010,
+                      0b01010101,
+                      0b10101010 }; 
+  window.SetBuffer(img1);
+  window.Render();
+  delay(1000); 
 
-  updateShiftRegister();
-  delay(DELAY);
-  for (int i = 0; i < 8; i++) // Turn all the LEDs ON one by one.
-  {    
-    for (int j = 0; j < 8; j++) // Turn all the LEDs ON one by one.
-    {
-       bitSet(leds2, j);    // Set the bit that controls that LED in the variable 'leds'
-       updateShiftRegister();
-       delay(DELAY);
-    }
+  uint8_t img2[6] = { 0b10101010,
+                      0b01010101,
+                      0b10101010,
+                      0b01010101,
+                      0b10101010,
+                      0b01010101 }; 
+  window.SetBuffer(img2);
+  window.Render();
 
-    bitSet(leds1, i);    // Set the bit that controls that LED in the variable 'leds'
-    leds2 = 0; // Initially turns all the LEDs off, by giving the variable 'leds' the value 0
-    updateShiftRegister();
-    delay(DELAY);    
-  }
-}
+  delay(1000); 
 
-/*
- * updateShiftRegister() - This function sets the latchPin to low, then calls the Arduino function 'shiftOut' to shift out contents of variable 'leds' in the shift register before putting the 'latchPin' high again.
- */
-void updateShiftRegister()
-{
-   shiftRegister.ShiftOut((uint8_t)255);
-   shiftRegister.ShiftOut(leds2);
-   shiftRegister.ShiftOut(leds1);
-   
-   shiftRegister.PushOut();
+  if(upBtn.Read())
+    SerialLogger::GetInstance().Log("UP Button Pressed\n");
+  if(downBtn.Read())
+    SerialLogger::GetInstance().Log("DOWN Button Pressed\n");
+  if(leftBtn.Read())
+    SerialLogger::GetInstance().Log("LEFT Button Pressed\n");
+  if(rightBtn.Read())
+    SerialLogger::GetInstance().Log("RIGHT Button Pressed\n");
 }
