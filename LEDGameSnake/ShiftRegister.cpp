@@ -1,7 +1,7 @@
 #include "ShiftRegister.hpp"
 #include <Core.hpp>
 
-#define DELAY 50
+#define DELAY 1
 
 ShiftRegister::ShiftRegister(uint8_t dataPin, uint8_t clockPin, uint8_t latchPin) : dataPin(dataPin), clockPin(clockPin), latchPin(latchPin) 
 {
@@ -34,7 +34,7 @@ void ShiftRegister::ShiftOut(uint8_t data)
 void ShiftRegister::ShiftOut(void *data, uint8_t size)
 {
    uint8_t *outArray = (uint8_t *)data;
-   for(auto i = size-1; i >=0; i--)
+   for(auto i = size - 1; i >=0; i--)
    {
       ShiftOut(outArray[i]);
    }

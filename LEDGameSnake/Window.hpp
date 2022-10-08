@@ -5,17 +5,17 @@
 
 class Window final
 {
-public:
-  Window(uint8_t dataPin, uint8_t clockPin, uint8_t latchPin);
+  public:
+    Window(uint8_t dataPin, uint8_t clockPin, uint8_t latchPin);
 
-  void SetBuffer(uint8_t *frameBuffer);
+    inline uint8_t* GetBuffer() { return this->frameBuffer; };
 
-  void Render();
+    void Render();
 
-private:
-  ShiftRegister window;
-  uint8_t * frameBuffer = nullptr;
+  private:
+    ShiftRegister window;
+    uint8_t frameBuffer[6] = { 0 };
   
 };
 
-#endif
+#endif /* WINDOW_HPP_ */
