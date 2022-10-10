@@ -7,9 +7,14 @@ Snake::Snake()
   Reset();
 }
 
+void Snake::Start()
+{
+  this->running = true;
+}
+
 void Snake::Reset()
 {
-  this->running     = true;
+  this->running     = false;
   this->direction   = Key::Right;
   this->tickCount   = 0;
   this->snakeLength = 3;
@@ -24,13 +29,13 @@ void Snake::Reset()
 
 void Snake::HandlePress(Key pressedKey)
 {
-    if (pressedKey != Key::None)
-    {
-        this->direction = pressedKey;
-    }
+  if(pressedKey != Key::None)
+  {
+    this->direction = pressedKey;
+  }
 }
 
-void Snake::Tick(uint16_t diff)
+void Snake::Tick()
 {
   if(!this->running)
   {

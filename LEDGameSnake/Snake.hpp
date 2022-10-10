@@ -7,12 +7,14 @@ class Snake final : public Game
 {
   public:
     Snake();
+
+    virtual void Start() override;
     
     virtual void Reset() override;
 
     virtual void HandlePress(Key pressedKey) override;
 
-    virtual void Tick(uint16_t diff) override;
+    virtual void Tick() override;
 
     virtual void Render(uint8_t *buffer) override;
 
