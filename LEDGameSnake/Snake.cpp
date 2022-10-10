@@ -1,7 +1,5 @@
 #include "Snake.hpp"
 
-#include <SerialLogger.hpp>
-
 #define SPEED 4
 
 Snake::Snake()
@@ -11,7 +9,7 @@ Snake::Snake()
 
 void Snake::Reset()
 {
-  this->running     = true; // TODO add start to interface
+  this->running     = true;
   this->direction   = Key::Right;
   this->tickCount   = 0;
   this->snakeLength = 3;
@@ -26,7 +24,10 @@ void Snake::Reset()
 
 void Snake::HandlePress(Key pressedKey)
 {
-  this->direction = pressedKey;
+    if (pressedKey != Key::None)
+    {
+        this->direction = pressedKey;
+    }
 }
 
 void Snake::Tick(uint16_t diff)
@@ -67,7 +68,7 @@ void Snake::Tick(uint16_t diff)
 
     // Get direction
     switch(this->direction)
-    {
+    {      
     case Key::Up:
       headY--;
       break;
@@ -82,7 +83,9 @@ void Snake::Tick(uint16_t diff)
       break;
     }
 
-    if(headY >= 6 || headX >= 8 || this->game[headY][headX] > 0)
+    // Check if new position is / will be empty
+    if(headY >= 6 || headX >= 8 || 
+      (this->game[headY][headX] > 0 && this->game[headY][headX] <= this->snakeLength))
     {
       this->running = false;
       return;
@@ -125,10 +128,6 @@ void Snake::Render(uint8_t *buffer)
   {    
     uint8_t y = this->loc & 0b00001111;
     uint8_t x = this->loc >> 4;
-    SerialLogger::GetInstance().Log(y);
-    SerialLogger::GetInstance().Log("  ");
-    SerialLogger::GetInstance().Log(x);
-    SerialLogger::GetInstance().NewLine();
     buffer[y] |= 1 << x;
   }
 }
