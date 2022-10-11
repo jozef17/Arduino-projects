@@ -1,8 +1,6 @@
 #ifndef PIN_CONST_HPP_
 #define PIN_CONST_HPP_
 
-#include <Core.hpp>
-
 #define UP_BUTTON    12
 #define DOWN_BUTTON  11
 #define LEFT_BUTTON  10
