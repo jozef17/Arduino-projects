@@ -3,6 +3,7 @@
 
 #include "View.hpp"
 #include "Game.hpp"
+#include "Message.hpp"
 
 class Controller final
 {
@@ -15,9 +16,12 @@ class Controller final
     void Run();
   
   private:
+    void RunGame();
+    void RunMessage();
+  
     View view;
     Game &game;
-    
+    Message message;
 };
 
 #endif /* CONTROLLER_HPP_ */
