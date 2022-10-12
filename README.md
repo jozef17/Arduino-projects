@@ -2,7 +2,7 @@
 Arduino projects
 
 ## [libraries](libraries)
-Contains human friendly abstractions 
+Contains shared functionality 
 ### Core
 Core library contains commonly used includes
 ### InputDevices
@@ -24,8 +24,6 @@ Contains functionality related to Arduino's IO pins
 - OutputPin represents any output pin (both PWM and digital)
     - Writes value to pin
 - IOPin enables to switch between input and output of given pin
-### (WIP) ShiftRegister
-- TODO
 ### StepperMotor
 Encapsulates functionality needed for stepper motor 28BYJ-48 with driver
 - Allows move stepper motor by required amount of steps in required direction
@@ -33,10 +31,11 @@ Encapsulates functionality needed for stepper motor 28BYJ-48 with driver
 
 ![Demo](libraries/ClassDiagram.png)
 
-## [(WIP) LED Game - Snake](LEDGameSnake)
-- (WIP) Snake game
+## [LED Game - Snake](LEDGameSnake)
+- Snake game
+- 6 by 8 (red) LED "display"
 
-(WIP) TODO: gif demonstratio
+![Demo](LEDGameSnake/media/SnakeGame.gif)
 
 ## [Watering System](WateringSystem)
 
