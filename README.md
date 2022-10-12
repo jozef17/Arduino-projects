@@ -33,7 +33,7 @@ Encapsulates functionality needed for stepper motor 28BYJ-48 with driver
 
 ![Demo](libraries/ClassDiagram.png)
 
-## [(WIP) LED Game - Snake](LEDGameSnake)
+## [(WIP) LED Game](LEDGame)
 - (WIP) Snake game
 
 (WIP) TODO: gif demonstratio

@@ -1,4 +1,4 @@
-﻿# (WIP) LED Game - Snake
+﻿# (WIP) LED Game
 
 - TODO
 - HW componenrts include:
