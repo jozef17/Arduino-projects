@@ -2,7 +2,7 @@
 Arduino projects
 
 ## [libraries](libraries)
-Contains human friendly abstractions 
+Contains shared functionality 
 ### Core
 Core library contains commonly used includes
 ### InputDevices
@@ -30,6 +30,12 @@ Encapsulates functionality needed for stepper motor 28BYJ-48 with driver
 - <span style="color:Red">**Note: Changing speed is not yet supported**</span>
 
 ![Demo](libraries/ClassDiagram.png)
+
+## [LED Game - Snake](LEDGameSnake)
+- Snake game
+- 6 by 8 (red) LED "display"
+
+![Demo](LEDGameSnake/media/SnakeGame.gif)
 
 ## [Watering System](WateringSystem)
 

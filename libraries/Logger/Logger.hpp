@@ -9,7 +9,7 @@ class Logger
     virtual void Log(const char* message) = 0;
     virtual void Log(long msg, int base = DEC) = 0;
 
-    inline void NewLine() = { Log("\n"); };
+    inline void NewLine() { Log("\n"); };
 
   protected:
     Logger() = default;
