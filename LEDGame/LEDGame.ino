@@ -1,5 +1,5 @@
-#define BREAKOUT
-//#define TETRIS
+//#define BREAKOUT
+#define TETRIS
 
 #include "Controller.hpp"
 
@@ -7,8 +7,8 @@
 #include "Breakout.hpp"
 Breakout game;
 #elif defined(TETRIS)
-//#include "Tetris.hpp"
-//Tetris game;
+#include "Tetris.hpp"
+Tetris game;
 #else
 #include "Snake.hpp"
 Snake game;
