@@ -16,10 +16,10 @@
 ## User Manual
 
 ### LED indicators
-- <B>Yellow LED On</B> - System is in callibrating mode 
-- <B>Green LED On</B> - Soild too dry and watering is in progress
-- <B>Green LED Flashing</B> - Extra wattering in progress
-- <B>All LEDs Off</B> - Soil is suffciently wet
+- **Yellow LED On** - System is in callibrating mode 
+- **Green LED On** - Soild too dry and watering is in progress
+- **Green LED Flashing** - Extra wattering in progress
+- **All LEDs Off** - Soil is suffciently wet
 
 ### Setup (Calibrating)
 Since different soil moisture sensor produce vales from different range, callibration ensures the right limits are taken into account.
