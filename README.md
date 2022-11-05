@@ -31,11 +31,20 @@ Encapsulates functionality needed for stepper motor 28BYJ-48 with driver
 
 ![Demo](libraries/ClassDiagram.png)
 
-## [LED Game - Snake](LEDGameSnake)
-- Snake game
+## [LED Games](LEDGame)
+- Implemented games:
+    - Breakout
+    - Snake
+    - Tetris
 - 6 by 8 (red) LED "display"
 
-![Demo](LEDGameSnake/media/SnakeGame.gif)
+**NOTE:** only one game deployed at a time
+
+![Demo](LEDGame/media/BreakoutGame.gif)
+
+![Demo](LEDGame/media/SnakeGame.gif)
+
+![Demo](LEDGame/media/TetrisGame.gif)
 
 ## [Watering System](WateringSystem)
 
