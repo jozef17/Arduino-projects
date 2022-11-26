@@ -5,10 +5,19 @@ Arduino projects
 Contains shared functionality 
 ### Core
 Core library contains commonly used includes
-### InputDevices
-Includes input devices abstractions
+### Devices
+Includes devices abstractions
 - Button
     - Distinguishes five states: **No Change**, **Pressed**, **Released**, **Long Pressed** and **Long Released**
+- Shift Register
+    - SN74HC595N SIPO register 
+- Stepper Motor
+    - Encapsulates functionality needed for stepper motor 28BYJ-48 with driver
+    - Allows move stepper motor by required amount of steps in required direction
+    - <span style="color:Red">**Note: Changing speed is not yet supported**</span>
+- (WIP)RF24L01 
+    - [RF24L01 Specification](https://www.mouser.com/datasheet/2/297/nRF24L01_Product_Specification_v2_0-9199.pdf)
+    - (WIP)
 ### Logger
 Contains all functionality needed for logging purposes.
 - Logger interface
@@ -24,10 +33,6 @@ Contains functionality related to Arduino's IO pins
 - OutputPin represents any output pin (both PWM and digital)
     - Writes value to pin
 - IOPin enables to switch between input and output of given pin
-### StepperMotor
-Encapsulates functionality needed for stepper motor 28BYJ-48 with driver
-- Allows move stepper motor by required amount of steps in required direction
-- <span style="color:Red">**Note: Changing speed is not yet supported**</span>
 
 ![Demo](libraries/ClassDiagram.png)
 

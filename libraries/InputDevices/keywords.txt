@@ -1,7 +1,0 @@
-#  datatypes and class names
-Button	KEYWORD1
-BtnState	KEYWORD1
-
-# functions and methods
-GetChange	KEYWORD2
-

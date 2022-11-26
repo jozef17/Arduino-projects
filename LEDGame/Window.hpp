@@ -1,7 +1,7 @@
 #ifndef WINDOW_HPP_
 #define WINDOW_HPP_
 
-#include "ShiftRegister.hpp"
+#include <ShiftRegister.hpp>
 
 class Window final
 {
