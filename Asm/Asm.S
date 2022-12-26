@@ -37,7 +37,8 @@ pattern_loop_inc:
 delay_and_btn_check:
     RCALL delay
     RCALL delay
-
+    RCALL delay
+    
     ; Check Button
     RCALL was_released
     BREQ next_pattern
