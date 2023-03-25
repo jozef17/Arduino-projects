@@ -1,26 +1,19 @@
 #include "SN74HC165.hpp"
 #include "PinConsts.hpp"
-#include <SerialLogger.hpp>
+#include "NRF24L01.hpp"
 
-SN74HC165 shiftRegister(CLOCK, CLOCK_EN, LOAD, DATA);
+SN74HC165 shiftRegister(CLOCK, CLOCK_EN, LOAD, DATA); // PISO register for buttons
+NRF24L01 rf(NRF_CSN, NRF_CE);                         // RF sender
 
 void setup()
-{}
+{
+  rf.SetAsTransmitter();
+}
  
 void loop()
 {
-  uint8_t buffer[2] = { 0, 0 };
+  uint8_t buffer[2];
   shiftRegister.Load(buffer, 2);
-  
-  for(uint8_t i = 0; i < 2; i++)  
-  {
-    for(uint8_t j = 0; j < 8; j++)  
-    {
-      SerialLogger::GetInstance().Log(buffer[i] & 1 << j ? "1" : "0");
-    }
-    SerialLogger::GetInstance().Log(" ");
-  }
-  SerialLogger::GetInstance().Log("\n");
-
+  rf.Send(buffer, sizeof(buffer));
   delay(200);
 }
