@@ -33,6 +33,8 @@ static const uint8_t channel = 76;
 NRF24L01::NRF24L01(OutputPin csn, OutputPin ce) : csn(csn), ce(ce)
 {
   // Init SPI
+  // TODO: Change to use begin and end transaction
+  //       when used with multiple SPI devices
   SPI.begin();
   SPI.setBitOrder(MSBFIRST);
   SPI.setDataMode(SPI_MODE0);
