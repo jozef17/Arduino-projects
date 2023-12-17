@@ -26,6 +26,8 @@
 #define W_TX_PAYLOAD  0xA0
 #define FLUSH_RX      0xE2
 
+#define MAX_DATA_SIZE 32
+
 // RF config
 static const char addr[6] = "00001";
 static const uint8_t channel = 76;
@@ -80,7 +82,7 @@ void NRF24L01::SetAsReciever()
 
   // address
   WriteRegister(RX_ADDR_P1, (uint8_t *)&addr, 5); 
-  WriteRegister(RX_PW_P1, 32);      // 32 bit paiload for pipe 1
+  WriteRegister(RX_PW_P1, MAX_DATA_SIZE * 8);      // MAX_DATA_SIZE bit paiload for pipe 1
 
   // Power up device in recieve mode
   uint8_t conf;
@@ -98,8 +100,8 @@ void NRF24L01::Send(uint8_t * data, uint8_t size)
   }
   
   // Prepare data
-  uint8_t sendBuffer[32];
-  for(int i = 0; i < 32; i++)
+  uint8_t sendBuffer[MAX_DATA_SIZE];
+  for(int i = 0; i < MAX_DATA_SIZE; i++)
   {
     if(i < size)
     {
@@ -114,7 +116,7 @@ void NRF24L01::Send(uint8_t * data, uint8_t size)
   // Send data
   CsnSelect();
   SPI.transfer(W_TX_PAYLOAD);
-  for(int8_t siz = 31; siz >= 0; siz--)
+  for(int8_t siz = MAX_DATA_SIZE - 1; siz >= 0; siz--)
   {
     SPI.transfer(sendBuffer[siz]);
   }
@@ -125,7 +127,7 @@ void NRF24L01::Send(uint8_t * data, uint8_t size)
   // Get Status
   uint8_t status;
   ReadRegister(FIFO_STATUS, &status, 1);
-  if( (status & (1 < 4 )) && (!(status & ( 1 << 3 ))) )
+  if( (status & (1 << 4 )) && (!(status & ( 1 << 3 ))) )
   {
     SerialLogger::GetInstance().Log("Data Sent\n");
   }
@@ -143,12 +145,12 @@ void NRF24L01::Recieve(uint8_t * buffer, uint8_t size)
   }
 
   // Recieve buffer
-  uint8_t recieveBuffer[32];
+  uint8_t recieveBuffer[MAX_DATA_SIZE];
 
   // Recieve data
   CsnSelect();
   SPI.transfer(R_RX_PAYLOAD);
-  for(int8_t siz = 31; siz >= 0; siz--)
+  for(int8_t siz = MAX_DATA_SIZE - 1; siz >= 0; siz--)
   {
     recieveBuffer[siz] = SPI.transfer(0xff);
   }

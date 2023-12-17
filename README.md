@@ -1,13 +1,14 @@
 # Arduino-projects
-Arduino projects
+Multiple Arduino-based project developed with Arduino IDE. 
+For more details about given project press the hyperlink or navigate to project directory.
 
 ## [libraries](libraries)
 Contains shared functionality 
-- Core
-- Devices
-    - Device abstarcions (like button, Stepper motor,...)
-- Logger
-- Pin
+- **Core**
+- **Devices**
+    - Device abstarcions (like button, stepper motor,...)
+- **Logger**
+- **Pin**
     - I/O pin abstarcions
 
 ## [Assembly](Asm)
@@ -16,20 +17,22 @@ Contains shared functionality
 
 ![Demo](Asm/media/Asm.gif)
 
+## [Controller](Controller)
+- RF controller
+
+![Demo](Controller/media/Controller.png)
+
 ## [LED Games](LEDGame)
 - Implemented games:
     - Breakout
     - Snake
     - Tetris
 - 6 by 8 (red) LED "display"
+- 4 input buttons
 
 **NOTE:** only one game deployed at a time
 
-![Demo](LEDGame/media/BreakoutGame.gif)
-
 ![Demo](LEDGame/media/SnakeGame.gif)
-
-![Demo](LEDGame/media/TetrisGame.gif)
 
 ## [Watering System](WateringSystem)
 
